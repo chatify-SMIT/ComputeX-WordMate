@@ -1,0 +1,5 @@
+
+    div[contenteditable="true"]:focus {
+        outline: none;
+        border: none;
+    }

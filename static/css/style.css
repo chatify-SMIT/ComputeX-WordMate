@@ -3,12 +3,6 @@
         outline: none;
         border: none;
     }
-#pastes{
-    border-radius: 10px;
-    border: none;
-    width: 80px;
-   background: #f3f3f3;
-   box-shadow: inset 20px 20px 60px #cfcfcf,
-            inset -20px -20px 60px #ffffff;
-            color: red;
-}
+    .active {
+        background-color: #c6c6c6;
+      }

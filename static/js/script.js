@@ -21,10 +21,8 @@ function zooming() {
   const maxZoomLevel = 1.85; // maximum zoom level of 185%
   const zoomedMarginBottom = (zoomLevel * 100) + 50; // calculate margin bottom based on zoom level
   const marginBottom = Math.min(zoomedMarginBottom, (maxZoomLevel * 100) + 50); // set minimum and maximum margin bottom
-  
   contentWrapper.classList.add("zoomed");
   contentWrapper.style.transform = `scale(${zoomLevel})`;
-  
   console.log(marginBottom);
   document.querySelector(".cont").style.marginBottom = `${marginBottom}px`;
 }
@@ -189,3 +187,37 @@ editor.addEventListener('input', function () {
   document.getElementById('words').innerHTML=count_words;
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toggleFullScreen() {
+  if (document.fullscreenElement) {
+    document.exitFullscreen();
+  } else {
+    document.documentElement.requestFullscreen();
+  }
+}
+document.getElementById('fullscreens').addEventListener("click", toggleFullScreen);

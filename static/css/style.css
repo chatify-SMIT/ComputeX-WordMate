@@ -6,4 +6,30 @@
     .active {
         background-color: #c6c6c6;
       }
-   
+      button:hover {
+        background-color: #c6c6c6;
+      
+      }
+
+      .cont {
+        /* Set the initial size of the container */
+        max-width: 21cm;
+        min-height: 29.7cm;
+        position: relative;
+        overflow: auto;
+        margin-bottom: 50px;
+      }
+      
+      body {
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+      }
+      
+    
+  
+    
+      
+      .zoomed {
+        transform-origin:top center;
+      }

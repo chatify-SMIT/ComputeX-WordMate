@@ -3,8 +3,69 @@ let alignbuttons = document.querySelectorAll(".align-button");
 let clipbuttons = document.querySelectorAll(".clip-button");
 let urbuttons = document.querySelectorAll(".ur-button");
 let clipoddbuttons = document.querySelectorAll(".clip-odd-button");
-
+let spacebuttons = document.querySelectorAll(".space-button");
 let editor = document.getElementById("text-editor");
+
+
+
+
+
+
+const contentWrapper = document.querySelector(".cont");
+const zoomRange = document.getElementById("zoom-range");
+const minus =document.getElementById("minus");
+const plus =document.getElementById("plus");
+
+function zooming() {
+  const zoomLevel = zoomRange.value / 100;
+  const maxZoomLevel = 1.85; // maximum zoom level of 185%
+  const zoomedMarginBottom = (zoomLevel * 100) + 50; // calculate margin bottom based on zoom level
+  const marginBottom = Math.min(zoomedMarginBottom, (maxZoomLevel * 100) + 50); // set minimum and maximum margin bottom
+  
+  contentWrapper.classList.add("zoomed");
+  contentWrapper.style.transform = `scale(${zoomLevel})`;
+  
+  console.log(marginBottom);
+  document.querySelector(".cont").style.marginBottom = `${marginBottom}px`;
+}
+
+contentWrapper.addEventListener("scroll", () => {
+  if (contentWrapper.classList.contains("zoomed")) {
+    contentWrapper.classList.remove("zoomed");
+    contentWrapper.style.transform = "none";
+    zoomRange.value = 100;
+  }
+});
+zoomRange.addEventListener("input", zooming);
+zoomRange.addEventListener("input", () => {
+
+    document.getElementById("range-percent").innerHTML = zoomRange.value;
+ 
+  });
+
+
+  plus.addEventListener("click", () => {
+
+    zoomRange.value = parseInt(zoomRange.value) + 1;
+    document.getElementById("range-percent").innerHTML = zoomRange.value;
+    zooming();
+  });
+
+  minus.addEventListener("click", () => {
+
+    zoomRange.value = parseInt(zoomRange.value) - 1;
+    document.getElementById("range-percent").innerHTML = zoomRange.value;
+    zooming();
+  });
+
+
+
+
+
+
+
+
+
 
 document.body.addEventListener("click", function () {
   editor.focus();
@@ -12,15 +73,14 @@ document.body.addEventListener("click", function () {
 
 const initializer = () => {
   highlighter(checkbuttons, false);
-  highlighter(alignbuttons, true);
-  
+  highlighter(alignbuttons, true);  
 };
 
 
 const modifyText = (command, defaultUi, value) => {
-
   document.execCommand(command, defaultUi, value);
 };
+
 
 const modifyText2 = (command) => {
     document.execCommand(command);
@@ -32,10 +92,11 @@ clipoddbuttons.forEach((button) => {
     editor.dispatchEvent(new Event("paste", { bubbles: true }));
   });
 });
+
 editor.addEventListener("paste", async (event) => {
   event.preventDefault();
   const text = await navigator.clipboard.readText();
-  document.execCommand("insertHTML", false, text);
+  document.execCommand("insertText", false, text);
 });
 
 urbuttons.forEach((button) => {
@@ -52,7 +113,11 @@ checkbuttons.forEach((button) => {
   });
 });
 
-
+spacebuttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    modifyText(button.id, false, null);
+  });
+});
 
 clipbuttons.forEach((button) => {
   button.addEventListener("click", () => {
@@ -60,15 +125,11 @@ clipbuttons.forEach((button) => {
   });
 });
 
-
-
-
 alignbuttons.forEach((button) => {
   button.addEventListener("click", () => {
     modifyText(button.id, false, null);
   });
 });
-
 const highlighter = (className, needsRemoval) => {
   className.forEach((button) => {
     button.addEventListener("click", () => {
@@ -116,3 +177,15 @@ editor.addEventListener("keyup", checks);
 
 
 window.onload = initializer();
+editor.addEventListener('input', function () {
+  var text = this.innerText;
+  var text2 = this.innerHTML;
+   console.log(text2);
+  count_words = text.trim().replace(/[\s\n]+/g, ' ').split(' ').length;
+  count_lines  = text2.split(/<div>|<\/div>/).filter(function(line) {
+    return line.trim() !== '';
+  }).length;
+  document.getElementById('lines').innerHTML=count_lines;
+  document.getElementById('words').innerHTML=count_words;
+
+});

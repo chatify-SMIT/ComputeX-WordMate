@@ -13,8 +13,8 @@
 
 </head>
 
-<body style="background: #e6e6e6;border-radius: 10px;" >
-    <div class="sticky-top">
+<body style="background: #e6e6e6;">
+    <div style="position: fixed; top: 0; z-index: 1;width: 100%;" >
         <nav class="navbar navbar-light navbar-expand-md d-flex" style="background: #2b579a;width: 100%;padding-top: 3px;padding-bottom: 4px;">
             <div class="container-fluid">
                 <div class="container" style="margin-left: 0px;margin-right: 0px;">
@@ -82,11 +82,15 @@
                                 <span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_list_bulleted</i></span>
                                 <span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_list_numbered</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-list-nested">
                                         <path fill-rule="evenodd" d="M4.5 11.5A.5.5 0 0 1 5 11h10a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm-2-4A.5.5 0 0 1 1 3h10a.5.5 0 0 1 0 1H1a.5.5 0 0 1-.5-.5z"></path>
-                                    </svg></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_indent_decrease</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_indent_increase</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="la la-sort-alpha-desc"></i></span></div>
+                                    </svg></span>
+                                <button id="outdent" class="fs-5 d-flex justify-content-center space-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_indent_decrease</i></button>
+                                <button id="indent" class="fs-5 d-flex justify-content-center space-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_indent_increase</i></button>
+                                <button             class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_line_spacing</i></button></div>
                             <div class="d-flex" style="margin-top: 10px;margin-bottom: 2px;">
                                 <button id="justifyLeft" class="fs-5 d-flex justify-content-center align-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_align_left</i></button>
                                 <button id="justifyCenter" class="fs-5 d-flex justify-content-center align-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_align_center</i></button>
-                                <button id="justifyRight" class="fs-5 d-flex justify-content-center align-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_align_right</i></button><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_line_spacing</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_color_fill</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-grid-3x3">
+                                <button id="justifyRight" class="fs-5 d-flex justify-content-center align-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_align_right</i></button>
+                                <button id="justifyFull" class="fs-5 d-flex justify-content-center align-button align-items-center align-content-center" style="border: none;height: 40px;width: 40px;"><i class="material-icons">format_align_justify</i></button><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><i class="material-icons">format_color_fill</i></span><span class="fs-5 d-flex justify-content-center align-items-center align-content-center" style="height: 40px;width: 40px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-grid-3x3">
                                         <path d="M0 1.5A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 14.5v-13zM1.5 1a.5.5 0 0 0-.5.5V5h4V1H1.5zM5 6H1v4h4V6zm1 4h4V6H6v4zm-1 1H1v3.5a.5.5 0 0 0 .5.5H5v-4zm1 0v4h4v-4H6zm5 0v4h3.5a.5.5 0 0 0 .5-.5V11h-4zm0-1h4V6h-4v4zm0-5h4V1.5a.5.5 0 0 0-.5-.5H11v4zm-1 0V1H6v4h4z"></path>
                                     </svg></span></div>
                             <div class="d-flex justify-content-center align-items-center" style="margin-top: 10px;margin-bottom: 2px;"><small style="color: #484848;font-size: 10px;">Paragraph</small></div>
@@ -101,15 +105,24 @@
             </div>
         </div>
     </div>
-    <div class="container-sm" style="position: relative;background: #ffffff;height: 1024px;margin-top: 20px;margin-bottom: 20px;border-radius: 5px;max-width: 800px;">
-        <div style="min-width: 100%;height: 100vh;" contenteditable="true"  id="text-editor"></div>
+    <div class="container-sm cont" style="position:static;background: #ffffff;margin-top: 220px;border-radius: 5px;">
+        <div style="min-width: 100%;height: 100%;overflow: auto;" contenteditable="true"  id="text-editor"></div>
     </div>
-    <nav class="navbar navbar-light navbar-expand-md d-flex align-items-center justify-content-sm-center sticky-md-bottom" style="background: #f3f3f3;height: 25px;border-top: 1pt solid #dbdbdb;">
-        <div class="container-fluid"><span class="d-flex justify-content-center align-items-center"><small>Page 1 of 1</small><small style="margin-left: 20px;">0 words</small><small style="margin-left: 20px;">0 lines</small></span><span class="d-none d-sm-flex justify-content-center align-items-center"><small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
-                        <path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor"></path>
-                    </svg></small><small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;"><input class="form-range d-flex justify-content-center align-items-center align-items-sm-center" type="range" style="margin-left: 10px;" min="1" max="100" name="zoom"></small><small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
-                        <path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor"></path>
-                    </svg></small><small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;">100 %</small></span></div>
+    <nav class="navbar navbar-light navbar-expand-md d-flex align-items-center justify-content-sm-center" style="background: #f3f3f3;height: 25px;border-top: 1pt solid #dbdbdb; position: fixed; bottom: 0; width: 100%;z-index: 2;">
+    <div class="container-fluid"><span class="d-flex justify-content-center align-items-center"><small>Page 1 of 1</small>
+        <small style="margin-left: 20px;"><span id="words">0</span>&nbsp;&nbsp;words</small><small style="margin-left: 20px;">
+            <span id="lines">0</span>&nbsp;&nbsp;lines</small></span><span class="d-none d-sm-flex justify-content-center align-items-center">
+                <button id="minus" class="d-flex justify-content-center align-items-center align-items-sm-center" style="border: none;" ><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 12C4 11.4477 4.44772 11 5 11H19C19.5523 11 20 11.4477 20 12C20 12.5523 19.5523 13 19 13H5C4.44772 13 4 12.5523 4 12Z" fill="currentColor"></path>
+                </svg></button>
+                    <small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;">
+                        <input class="form-range d-flex justify-content-center align-items-center align-items-sm-center" type="range" style="margin-left: 10px;" min="40" max="185" value="100" id="zoom-range"></small>
+                        <button id="plus" class="d-flex justify-content-center align-items-center align-items-sm-center" style="border: none;margin-left: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4C11.4477 4 11 4.44772 11 5V11H5C4.44772 11 4 11.4477 4 12C4 12.5523 4.44772 13 5 13H11V19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19V13H19C19.5523 13 20 12.5523 20 12C20 11.4477 19.5523 11 19 11H13V5C13 4.44772 12.5523 4 12 4Z" fill="currentColor"></path>
+                        </svg></button>
+
+                    <small class="d-flex justify-content-center align-items-center align-items-sm-center" style="margin-left: 10px;">
+                    <small id="range-percent">100</small>&nbsp;%</small></span></div>
     </nav>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="static/js/script.js"></script>

@@ -64,12 +64,16 @@ zoomRange.addEventListener("input", () => {
 
 
 
+  document.body.addEventListener('click', function(event) {
 
-document.body.addEventListener("click", function () {
-  editor.focus();
-  setCaretAtStartEnd(editor, true);
-});
-
+  
+    // Check if the click event target is the particular div or one of its children
+    if (!editor.contains(event.target)) {
+      // Your code here
+      editor.focus();
+      setCaretAtStartEnd(editor, true);
+    }
+  });
 
 
 function setCaretAtStartEnd(node, atEnd) {

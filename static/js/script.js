@@ -67,7 +67,25 @@ zoomRange.addEventListener("input", () => {
 
 document.body.addEventListener("click", function () {
   editor.focus();
+  setCaretAtStartEnd(editor, true);
 });
+
+
+
+function setCaretAtStartEnd(node, atEnd) {
+  const sel = document.getSelection();
+  const lastChild = node.lastChild.firstChild;
+  
+  if (lastChild !== null) {
+  if (sel.rangeCount) {
+  ['Start', 'End'].forEach(pos =>
+  sel.getRangeAt(0)["set" + pos](lastChild, atEnd ? lastChild.length : 0)
+  );
+  }
+  }
+  }
+
+
 
 const initializer = () => {
   highlighter(checkbuttons, false);
@@ -187,9 +205,6 @@ editor.addEventListener('input', function () {
   document.getElementById('words').innerHTML=count_words;
 
 });
-
-
-
 
 
 

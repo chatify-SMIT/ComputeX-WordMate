@@ -16,8 +16,11 @@
         max-width: 21cm;
         min-height: 29.7cm;
         position: relative;
-        overflow: auto;
         margin-bottom: 50px;
+        overflow: hidden;
+        background: #ffffff;
+        margin-top: 220px;
+        border-radius: 5px;
       }
       
       body {

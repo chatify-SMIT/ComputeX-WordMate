@@ -71,23 +71,11 @@ zoomRange.addEventListener("input", () => {
     if (!editor.contains(event.target)) {
       // Your code here
       editor.focus();
-      setCaretAtStartEnd(editor, true);
+
+    
     }
   });
 
-
-function setCaretAtStartEnd(node, atEnd) {
-  const sel = document.getSelection();
-  const lastChild = node.lastChild.firstChild;
-  
-  if (lastChild !== null) {
-  if (sel.rangeCount) {
-  ['Start', 'End'].forEach(pos =>
-  sel.getRangeAt(0)["set" + pos](lastChild, atEnd ? lastChild.length : 0)
-  );
-  }
-  }
-  }
 
 
 

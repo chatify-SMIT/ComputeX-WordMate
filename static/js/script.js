@@ -6,9 +6,19 @@ let clipoddbuttons = document.querySelectorAll(".clip-odd-button");
 let spacebuttons = document.querySelectorAll(".space-button");
 let editor = document.getElementById("text-editor");
 
+function backColor(){
+  let a = document.getElementById("backColor");
+  modifyText("backColor", false, a.value);
+  document.getElementById("color-1").style.color = a.value;
+  editor.focus()
+}
 
-
-
+function foreColor(){
+  let a = document.getElementById("foreColor");
+  modifyText("foreColor", false, a.value);
+  document.getElementById("color-2").style.color = a.value;
+  editor.focus()
+}
 
 
 const contentWrapper = document.querySelector(".cont");

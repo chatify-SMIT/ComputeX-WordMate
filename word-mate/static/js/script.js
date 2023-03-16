@@ -4,21 +4,34 @@ let clipbuttons = document.querySelectorAll(".clip-button");
 let urbuttons = document.querySelectorAll(".ur-button");
 let clipoddbuttons = document.querySelectorAll(".clip-odd-button");
 let spacebuttons = document.querySelectorAll(".space-button");
+let advancedOptionButton = document.querySelectorAll(".advancedOptionButton");
 let editor = document.getElementById("text-editor");
 
-function backColor(){
-  let a = document.getElementById("backColor");
-  modifyText("backColor", false, a.value);
-  document.getElementById("color-1").style.color = a.value;
-  editor.focus()
-}
 
-function foreColor(){
-  let a = document.getElementById("foreColor");
-  modifyText("foreColor", false, a.value);
-  document.getElementById("color-2").style.color = a.value;
-  editor.focus()
-}
+advancedOptionButton.forEach((button) => {
+  button.addEventListener("change", () => {
+    modifyText(button.id, false, button.value);
+  });
+});
+
+
+
+  document.getElementById("borders").addEventListener("click", () => {
+    var selection = window.getSelection(); /* get the current selection */
+    var range = selection.getRangeAt(0); /* get the range of the current selection */
+
+    var selectedText = range.cloneContents(); /* get the selected text */
+    var span = document.createElement("span"); /* create a new span element */
+    span.appendChild(selectedText); /* add the selected text to the span */
+    span.classList.add("myclass"); /* add the class to the span */
+  
+    range.deleteContents(); /* delete the selected text */
+    range.insertNode(span); /* insert the span in its place */
+  
+    selection.removeAllRanges(); /* clear the selection */
+  
+    editor.focus();
+  });
 
 
 const contentWrapper = document.querySelector(".cont");

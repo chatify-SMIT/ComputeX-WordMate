@@ -10,7 +10,9 @@
         background-color: #c6c6c6;
       
       }
-
+      .myclass {
+        border: 1px solid black; /* add a border to the text */
+      }
       .cont {
         /* Set the initial size of the container */
         max-width: 21cm;

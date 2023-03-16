@@ -22,8 +22,8 @@
   text-align: center;
   line-height: 70px;
   display: inline-block;
-  background-color: #483e3e;
-  border: 1px solid #33ccff;
+  background-color: #252127;
+  border: 1px solid #fc155e;
   height: 70px;
   width: 100px;
   font-size: 36px;
@@ -31,7 +31,7 @@
   cursor: pointer;
 }
 .button:hover {
-  background-color: #001f4d;
+  background-color: #e7004d;
   box-shadow: 0px 0px 30px 0px #fff;
 }
 .button:active {

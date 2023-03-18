@@ -5,8 +5,48 @@ let urbuttons = document.querySelectorAll(".ur-button");
 let clipoddbuttons = document.querySelectorAll(".clip-odd-button");
 let spacebuttons = document.querySelectorAll(".space-button");
 let advancedOptionButton = document.querySelectorAll(".advancedOptionButton");
+let fontName = document.getElementById("fontName");
 let editor = document.getElementById("text-editor");
+// Get the content of the div element
+const editorContent = document.getElementById('text-editor').innerHTML;
+// let sizeno = document.querySelectorAll(".sizeno");
+let fontList = ["Arial", "Helvetica"," Verdana", "Calibri"," Noto"," Lucida Sans", "Gill Sans", "Century Gothic"," Candara", "Futara", "Franklin Gothic Medium", "Trebuchet MS"," Geneva"," Segoe UI","Optima", "Avanta Garde","Times New Roman"," Big Caslon", "Bodoni MT"," Book Antiqua", "Bookman", "c", "Calisto MT", "Cambria", "Didot", "Garamond ","Georgia"," Goudy Old Style", "Hoefler Text", "Lucida Bright", "Palatino", "Perpetua", "Rockwell", "Rockwell Extra Bold", "Baskerville","Consolas"," Courier"," Courier New", "Lucida Console", "Lucidatypewriter", "Lucida Sans Typewriter", "Monaco", "Andale Mono","Comic Sans", "Comic Sans MS", "Apple Chancery", "Bradley Hand"," Brush Script MT" ,"Brush Script Std ","URW Chancery ", "Coronet script","Florence","Parkavenue","Impact"," Brushstroke", "Luminari"," Chalkduster", "Jazz LET"," Blippo", "Stencil Std", "Marker Felt", "Trattatello" ,"Arnoldboecklin", "Oldtown", "Copperplate","papyrus"];
 
+function Export2Word(element, filename = ''){
+  var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+  var postHtml = "</body></html>";
+  var html = preHtml+document.getElementById('text-editor').innerHTML+postHtml;
+
+  var blob = new Blob(['\ufeff', html], {
+      type: 'application/msword'
+  });
+  
+  // Specify link url
+  var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+  
+  // Specify file name
+  filename = filename?filename+'.doc':'document.doc';
+  
+  // Create download link element
+  var downloadLink = document.createElement("a");
+
+  document.body.appendChild(downloadLink);
+  
+  if(navigator.msSaveOrOpenBlob ){
+      navigator.msSaveOrOpenBlob(blob, filename);
+  }else{
+      // Create a link to the file
+      downloadLink.href = url;
+      
+      // Setting the file name
+      downloadLink.download = filename;
+      
+      //triggering the function
+      downloadLink.click();
+  }
+  
+  document.body.removeChild(downloadLink);
+}
 
 advancedOptionButton.forEach((button) => {
   button.addEventListener("change", () => {
@@ -14,6 +54,11 @@ advancedOptionButton.forEach((button) => {
   });
 });
 
+// sizeno.forEach((button) => {
+//   button.addEventListener("click", () => {
+ //    modifyText(button.id, false,"100px");
+ //  });
+// });
 
 
   document.getElementById("borders").addEventListener("click", () => {
@@ -86,25 +131,17 @@ zoomRange.addEventListener("input", () => {
 
 
 
-
-  document.body.addEventListener('click', function(event) {
-
-  
-    // Check if the click event target is the particular div or one of its children
-    if (!editor.contains(event.target)) {
-      // Your code here
-      editor.focus();
-
-    
-    }
-  });
-
-
-
-
 const initializer = () => {
   highlighter(checkbuttons, false);
   highlighter(alignbuttons, true);  
+
+  fontList.map((value) => {
+    let option = document.createElement("option");
+    option.value = value;
+    option.innerHTML = value;
+    option.style.fontFamily=value;
+    fontName.appendChild(option);
+  });
 };
 
 
@@ -220,26 +257,6 @@ editor.addEventListener('input', function () {
   document.getElementById('words').innerHTML=count_words;
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

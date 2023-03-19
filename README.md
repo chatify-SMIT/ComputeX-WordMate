@@ -1,3 +1,3 @@
 # **WORD MATE & CALCULATEX**
 ## Live Demo
-- [**https://chatify-smit.github.io/ComputeX-WordMate**](https://chatify-smit.github.io/ComputeX-WordMate/)
+- [**https://calculatex-wordmate.netlify.app**](https://calculatex-wordmate.netlify.app/)

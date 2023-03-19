@@ -1,20 +1,21 @@
-
-    div[contenteditable="true"]:focus {
+div[contenteditable="true"]:focus {
         outline: none;
         border: none;
-    }
-    .active {
+}
+
+.active {
         background-color: #c6c6c6;
-      }
-      button:hover {
+}
+
+button:hover {
         background-color: #c6c6c6;
-      
+}
+
+.myclass {
+        border: 1px solid black; 
       }
-      .myclass {
-        border: 1px solid black; /* add a border to the text */
-      }
-      .cont {
-        /* Set the initial size of the container */
+
+.cont {
         max-width: 21cm;
         min-height: 29.7cm;
         position: relative;
@@ -23,16 +24,14 @@
         background: #ffffff;
         margin-top: 220px;
         border-radius: 5px;
-      }
+}
       
-      body {
+body {
         overflow: auto;
         margin: 0;
         padding: 0;
-      }
+}
 
-    
-      
-      .zoomed {
+.zoomed {
         transform-origin:top center;
-      }
+}

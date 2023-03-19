@@ -7,11 +7,10 @@ let spacebuttons = document.querySelectorAll(".space-button");
 let advancedOptionButton = document.querySelectorAll(".advancedOptionButton");
 let fontName = document.getElementById("fontName");
 let editor = document.getElementById("text-editor");
-// Get the content of the div element
-const editorContent = document.getElementById('text-editor').innerHTML;
-// let sizeno = document.querySelectorAll(".sizeno");
-let fontList = ["Arial", "Helvetica"," Verdana", "Calibri"," Noto"," Lucida Sans", "Gill Sans", "Century Gothic"," Candara", "Futara", "Franklin Gothic Medium", "Trebuchet MS"," Geneva"," Segoe UI","Optima", "Avanta Garde","Times New Roman"," Big Caslon", "Bodoni MT"," Book Antiqua", "Bookman", "c", "Calisto MT", "Cambria", "Didot", "Garamond ","Georgia"," Goudy Old Style", "Hoefler Text", "Lucida Bright", "Palatino", "Perpetua", "Rockwell", "Rockwell Extra Bold", "Baskerville","Consolas"," Courier"," Courier New", "Lucida Console", "Lucidatypewriter", "Lucida Sans Typewriter", "Monaco", "Andale Mono","Comic Sans", "Comic Sans MS", "Apple Chancery", "Bradley Hand"," Brush Script MT" ,"Brush Script Std ","URW Chancery ", "Coronet script","Florence","Parkavenue","Impact"," Brushstroke", "Luminari"," Chalkduster", "Jazz LET"," Blippo", "Stencil Std", "Marker Felt", "Trattatello" ,"Arnoldboecklin", "Oldtown", "Copperplate","papyrus"];
 
+const editorContent = document.getElementById('text-editor').innerHTML;
+let sizeno = document.getElementById("fontSize");
+let fontList = ["Arial", "Helvetica"," Verdana", "Calibri"," Noto"," Lucida Sans", "Gill Sans", "Century Gothic"," Candara", "Futara", "Franklin Gothic Medium", "Trebuchet MS"," Geneva"," Segoe UI","Optima", "Avanta Garde","Times New Roman"," Big Caslon", "Bodoni MT"," Book Antiqua", "Bookman", "c", "Calisto MT", "Cambria", "Didot", "Garamond ","Georgia"," Goudy Old Style", "Hoefler Text", "Lucida Bright", "Palatino", "Perpetua", "Rockwell", "Rockwell Extra Bold", "Baskerville","Consolas"," Courier"," Courier New", "Lucida Console", "Lucidatypewriter", "Lucida Sans Typewriter", "Monaco", "Andale Mono","Comic Sans", "Comic Sans MS", "Apple Chancery", "Bradley Hand"," Brush Script MT" ,"Brush Script Std ","URW Chancery ", "Coronet script","Florence","Parkavenue","Impact"," Brushstroke", "Luminari"," Chalkduster", "Jazz LET"," Blippo", "Stencil Std", "Marker Felt", "Trattatello" ,"Arnoldboecklin", "Oldtown", "Copperplate","papyrus"];
 function Export2Word(element, filename = ''){
   var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
   var postHtml = "</body></html>";
@@ -53,12 +52,27 @@ advancedOptionButton.forEach((button) => {
     modifyText(button.id, false, button.value);
   });
 });
+let inputsize =document.getElementById("inputtexts2");
 
-// sizeno.forEach((button) => {
-//   button.addEventListener("click", () => {
- //    modifyText(button.id, false,"100px");
- //  });
-// });
+const setSize = (size) => {
+  const selection = window.getSelection();
+  if (selection.rangeCount) {
+    const range = selection.getRangeAt(0);
+    const span = document.createElement("span");
+    span.style.fontSize = size + "px";
+    range.surroundContents(span);
+  }
+};
+
+  sizeno.addEventListener("click", () => {
+    console.log(inputsize.value);
+    setSize(inputsize.value);
+  });
+  inputsize.addEventListener("change", () => {
+    console.log(inputsize.value);
+    setSize(inputsize.value);
+  });
+
 
 
   document.getElementById("borders").addEventListener("click", () => {
